@@ -3,232 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía 3º ESO: Reproducción y Salud</title>
+    <title>Instagram Científico - 3º ESO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f0f4f8;
-            color: #334155;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #262626;
         }
 
-        .slide-container {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .step-card {
+        .insta-post {
+            max-width: 470px;
+            margin: 2rem auto;
             background: white;
-            border-radius: 2rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
 
-        .danger-card {
-            border: 2px solid #fee2e2;
-            background-color: #fef2f2;
+        .carousel-view {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .safe-card {
-            border: 2px solid #dcfce7;
-            background-color: #f0fdf4;
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            text-align: center;
         }
 
-        .progress-fill {
-            transition: width 0.4s ease;
+        /* Estilos de las diapositivas */
+        .slide-1 { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; }
+        .slide-2 { background: #ffffff; color: #1e293b; }
+        .slide-3 { background: #fef2f2; color: #991b1b; }
+        .slide-4 { background: #f0fdf4; color: #166534; }
+        .slide-5 { background: #0f172a; color: white; }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            margin: 0 2px;
+            transition: all 0.3s;
         }
+        .dot.active { background: #3b82f6; transform: scale(1.2); }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="p-4">
 
-    <!-- Progreso Superior -->
-    <div class="fixed top-0 left-0 w-full p-6 z-50">
-        <div class="max-w-xl mx-auto">
-            <div class="flex justify-between items-center mb-2">
-                <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Biología y Geología 3º ESO</span>
-                <span id="step-counter" class="text-xs font-bold text-orange-500">1 / 8</span>
+    <div class="insta-post">
+        <!-- Cabecera -->
+        <div class="flex items-center p-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-[10px]">
+                <i class="fas fa-dna"></i>
             </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                <div id="progress-bar" class="progress-fill bg-orange-500 h-full w-[12.5%]"></div>
+            <div class="ml-3">
+                <p class="text-xs font-bold font-sans">bio_divulga_3eso</p>
+                <p class="text-[10px] text-gray-500">Divulgación Científica</p>
             </div>
+            <i class="fas fa-ellipsis-h ml-auto text-gray-400"></i>
         </div>
-    </div>
 
-    <!-- Contenedor Principal -->
-    <div class="relative w-full max-w-xl h-[600px] overflow-hidden step-card border border-slate-100">
-        <div id="slider" class="slide-container flex h-full w-[800%]">
+        <!-- Carrusel -->
+        <div class="relative overflow-hidden cursor-pointer" id="carousel-trigger">
+            <div id="slides" class="carousel-view">
+                <!-- Slide 1 -->
+                <div class="slide slide-1">
+                    <h2 class="text-3xl font-black uppercase italic leading-none mb-4 tracking-tighter">¿Fuiste del tamaño de un alfiler? 📍</h2>
+                    <p class="text-sm font-medium opacity-90">Desliza para descubrir cómo empezó tu vida y cómo cuidarla ➡️</p>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide slide-2">
+                    <div class="text-4xl mb-4">✨</div>
+                    <h3 class="text-xl font-bold mb-2">La Fecundación</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Todo ocurre en las <b>Trompas de Falopio</b>. Un óvulo y un espermatozoide se unen para formar el <b>cigoto</b>: una sola célula con 46 cromosomas.</p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide slide-3">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h3 class="text-xl font-bold mb-2">Periodo Crítico</h3>
+                    <p class="text-sm leading-relaxed">Entre las semanas 3 y 8, se forman los órganos. El <b>alcohol</b> y el <b>tabaco</b> pueden causar daños irreversibles en el cerebro del embrión.</p>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide slide-4">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h3 class="text-xl font-bold mb-2">Prevención Vital</h3>
+                    <p class="text-sm leading-relaxed">El <b>ácido fólico</b> (Vitamina B9) ayuda a cerrar correctamente el tubo neural, evitando malformaciones graves como la espina bífida.</p>
+                </div>
+                <!-- Slide 5 -->
+                <div class="slide slide-5">
+                    <h3 class="text-2xl font-bold mb-4 italic">¡Tú decides!</h3>
+                    <p class="text-sm opacity-80 mb-6">La ciencia nos da el poder de prevenir. ¿Conocías la importancia de las primeras semanas?</p>
+                    <div class="flex gap-4">
+                        <i class="far fa-heart text-2xl"></i>
+                        <i class="far fa-comment text-2xl"></i>
+                        <i class="far fa-bookmark text-2xl"></i>
+                    </div>
+                </div>
+            </div>
             
-            <!-- Slide 1: Inicio -->
-            <div class="w-full h-full flex flex-col items-center justify-center p-10 text-center">
-                <div class="w-32 h-32 bg-orange-100 rounded-full flex items-center justify-center mb-8 animate-bounce">
-                    <i class="fas fa-baby text-5xl text-orange-500"></i>
-                </div>
-                <h1 class="text-3xl font-extrabold text-slate-800 mb-4">La Reproducción <br>y la Vida</h1>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Aprende cómo se crea la vida, qué riesgos existen y cómo cuidar un embarazo. ¡Nivel 3º ESO!</p>
-                <button onclick="next()" class="px-10 py-4 bg-orange-500 text-white rounded-full font-bold shadow-lg hover:bg-orange-600 transition-all">Empezar</button>
+            <!-- Contador -->
+            <div class="absolute top-3 right-3 bg-black/50 text-white text-[10px] px-2 py-1 rounded-full font-bold">
+                <span id="counter">1</span>/5
             </div>
-
-            <!-- Slide 2: Los Gametos -->
-            <div class="w-full h-full flex flex-col p-10">
-                <h2 class="text-2xl font-bold text-orange-600 mb-6">1. Las Células Sexuales</h2>
-                <div class="space-y-4">
-                    <div class="flex items-center p-4 bg-pink-50 rounded-2xl">
-                        <span class="text-3xl mr-4">🥚</span>
-                        <div>
-                            <p class="font-bold text-sm">Óvulo (Femenino)</p>
-                            <p class="text-xs text-slate-500">Grande, no se mueve. Tiene los nutrientes iniciales.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center p-4 bg-blue-50 rounded-2xl">
-                        <span class="text-3xl mr-4">🚤</span>
-                        <div>
-                            <p class="font-bold text-sm">Espermatozoide (Masculino)</p>
-                            <p class="text-xs text-slate-500">Pequeño y muy rápido. Tiene una cola para nadar.</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="mt-6 text-sm text-slate-500 italic">Cada uno aporta 23 cromosomas para formar una persona con 46.</p>
-            </div>
-
-            <!-- Slide 3: Fecundación -->
-            <div class="w-full h-full flex flex-col p-10 bg-orange-50">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6">2. El Encuentro</h2>
-                <div class="bg-white p-6 rounded-3xl shadow-sm mb-6 text-center">
-                    <p class="text-4xl mb-4">✨</p>
-                    <p class="text-sm text-slate-600">Ocurre en las <strong>Trompas de Falopio</strong>. Solo un espermatozoide entra en el óvulo.</p>
-                </div>
-                <div class="p-4 bg-orange-200 rounded-2xl text-center">
-                    <p class="text-xs font-bold uppercase text-orange-800">Resultado</p>
-                    <p class="text-lg font-bold">Cigoto</p>
-                </div>
-            </div>
-
-            <!-- Slide 4: El Desarrollo -->
-            <div class="w-full h-full flex flex-col p-10">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6">3. El Viaje al Útero</h2>
-                <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <p class="text-sm"><strong>División:</strong> El cigoto se divide en 2, 4, 8... hasta formar una "mora" (mórula).</p>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <p class="text-sm"><strong>Implantación:</strong> El embrión se pega a la pared del útero (endometrio).</p>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                        <p class="text-sm"><strong>Placenta:</strong> El órgano que conecta a la madre con el bebé para alimentarlo.</p>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Slide 5: Peligros Químicos -->
-            <div class="w-full h-full flex flex-col p-10 danger-card">
-                <h2 class="text-2xl font-bold text-red-600 mb-6">4. ¡Peligro! Sustancias</h2>
-                <p class="text-xs text-red-800 font-bold mb-4">Estas sustancias dañan al embrión directamente:</p>
-                <div class="space-y-3">
-                    <div class="bg-white/50 p-3 rounded-xl text-sm">
-                        <strong>Alcohol:</strong> Causa daños en el cerebro y retrasos irreversibles.
-                    </div>
-                    <div class="bg-white/50 p-3 rounded-xl text-sm">
-                        <strong>Tabaco:</strong> Hace que llegue menos oxígeno. El bebé nace con poco peso.
-                    </div>
-                    <div class="bg-white/50 p-3 rounded-xl text-sm">
-                        <strong>Drogas:</strong> Pueden provocar malformaciones o abortos.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 6: Peligros Externos -->
-            <div class="w-full h-full flex flex-col p-10 danger-card">
-                <h2 class="text-2xl font-bold text-red-600 mb-6">5. Otros Riesgos</h2>
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="bg-white/50 p-4 rounded-2xl flex items-center">
-                        <i class="fas fa-radiation text-2xl mr-4 text-red-400"></i>
-                        <p class="text-xs"><strong>Rayos X:</strong> No se deben hacer radiografías sin avisar del embarazo.</p>
-                    </div>
-                    <div class="bg-white/50 p-4 rounded-2xl flex items-center">
-                        <i class="fas fa-virus text-2xl mr-4 text-red-400"></i>
-                        <p class="text-xs"><strong>Infecciones:</strong> Como la rubéola o la toxoplasmosis (cuidado con gatos y carne cruda).</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 7: Prevención -->
-            <div class="w-full h-full flex flex-col p-10 safe-card">
-                <h2 class="text-2xl font-bold text-green-700 mb-6">6. ¿Cómo evitarlo?</h2>
-                <div class="space-y-4">
-                    <div class="flex items-center p-3 bg-white rounded-xl shadow-sm">
-                        <i class="fas fa-pills text-green-500 mr-4"></i>
-                        <p class="text-xs">Tomar <strong>Ácido Fólico</strong> (vitamina B9) antes y durante el embarazo.</p>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-xl shadow-sm">
-                        <i class="fas fa-apple-alt text-green-500 mr-4"></i>
-                        <p class="text-xs">Dieta sana: mucho hierro, calcio y nada de carne cruda.</p>
-                    </div>
-                    <div class="flex items-center p-3 bg-white rounded-xl shadow-sm">
-                        <i class="fas fa-user-md text-green-500 mr-4"></i>
-                        <p class="text-xs">Ir a todas las <strong>revisiones médicas</strong> y ecografías.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 8: Fin -->
-            <div class="w-full h-full flex flex-col items-center justify-center p-10 text-center bg-slate-800 text-white">
-                <i class="fas fa-check-circle text-6xl text-green-400 mb-6"></i>
-                <h2 class="text-3xl font-bold mb-4">¡Repaso Listo!</h2>
-                <p class="text-slate-400 text-sm mb-10">Recuerda: El embarazo es una etapa delicada. Evitar tóxicos y cuidarse es clave.</p>
-                <button onclick="goTo(0)" class="px-8 py-3 bg-orange-500 rounded-full font-bold uppercase tracking-widest text-xs">Volver al inicio</button>
-            </div>
-
         </div>
 
-        <!-- Botones de Navegación -->
-        <div class="absolute bottom-6 left-0 w-full px-8 flex justify-between pointer-events-none">
-            <button id="btnPrev" class="pointer-events-auto w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-800 opacity-0 transition-all hover:bg-orange-500 hover:text-white">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button id="btnNext" class="pointer-events-auto w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white transition-all hover:bg-orange-500">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+        <!-- Botones -->
+        <div class="p-3 flex items-center">
+            <div class="flex gap-4">
+                <i class="far fa-heart text-2xl hover:text-red-500 transition-colors"></i>
+                <i class="far fa-comment text-2xl"></i>
+                <i class="far fa-paper-plane text-2xl"></i>
+            </div>
+            <div class="flex mx-auto" id="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <i class="far fa-bookmark text-2xl ml-auto"></i>
+        </div>
+
+        <!-- Texto del Pie -->
+        <div class="px-3 pb-4">
+            <p class="text-xs mb-1 font-bold">bio_divulga_3eso <span class="font-normal text-gray-600">🧬 El inicio de todo.</span></p>
+            <p class="text-[11px] text-gray-500">¿Sabías que tus órganos principales se formaron antes de que tu madre supiera que estaba embarazada? La ciencia prenatal es fascinante...</p>
         </div>
     </div>
 
     <script>
-        const slider = document.getElementById('slider');
-        const btnNext = document.getElementById('btnNext');
-        const btnPrev = document.getElementById('btnPrev');
-        const progress = document.getElementById('progress-bar');
-        const counter = document.getElementById('step-counter');
-
         let current = 0;
-        const total = 8;
+        const total = 5;
+        const slides = document.getElementById('slides');
+        const dots = document.querySelectorAll('.dot');
+        const counter = document.getElementById('counter');
 
-        function update() {
-            slider.style.transform = `translateX(-${current * (100 / total)}%)`;
-            progress.style.width = `${((current + 1) / total) * 100}%`;
-            counter.innerText = `${current + 1} / ${total}`;
-
-            btnPrev.style.opacity = current === 0 ? '0' : '1';
-            btnPrev.style.pointerEvents = current === 0 ? 'none' : 'auto';
-            btnNext.style.opacity = current === total - 1 ? '0' : '1';
-        }
-
-        function next() { if (current < total - 1) { current++; update(); } }
-        function prev() { if (current > 0) { current--; update(); } }
-        function goTo(n) { current = n; update(); }
-
-        btnNext.addEventListener('click', next);
-        btnPrev.addEventListener('click', prev);
-
-        // Teclado
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') next();
-            if (e.key === 'ArrowLeft') prev();
+        document.getElementById('carousel-trigger').addEventListener('click', () => {
+            current = (current + 1) % total;
+            slides.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            counter.innerText = current + 1;
         });
-
-        update();
     </script>
 </body>
 </html>
