@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta etiquetas para asegurar compatibilidad en Iframes -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Curiosidad Científica - Instagram 3º ESO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -13,16 +15,22 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f2f5;
             color: #262626;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .insta-post {
+            width: 100%;
             max-width: 470px;
-            margin: 2rem auto;
             background: white;
             border: 1px solid #dbdbdb;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
         }
 
         .carousel-view {
@@ -38,11 +46,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
+            padding: 2rem;
             text-align: center;
+            box-sizing: border-box;
         }
 
-        /* Temática visual de curiosidad */
         .slide-1 { background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%); color: #1e293b; }
         .slide-2 { background: #ffffff; color: #334155; }
         .slide-3 { background: #ecfeff; color: #083344; }
@@ -59,14 +67,14 @@
         }
         .dot.active { background: #f59e0b; transform: scale(1.3); }
         
-        .clickable { cursor: pointer; }
+        .clickable { cursor: pointer; user-select: none; }
     </style>
 </head>
-<body class="p-4">
+<body>
 
     <div class="insta-post">
         <!-- Cabecera -->
-        <div class="flex items-center p-3">
+        <div class="flex items-center p-3 border-b border-gray-50">
             <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white text-[10px] shadow-inner">
                 <i class="fas fa-lightbulb"></i>
             </div>
@@ -77,57 +85,57 @@
             <i class="fas fa-ellipsis-h ml-auto text-gray-400"></i>
         </div>
 
-        <!-- Carrusel -->
+        <!-- Carrusel Interactivo -->
         <div class="relative overflow-hidden clickable" id="carousel-trigger">
             <div id="slides" class="carousel-view">
                 <!-- Slide 1 -->
                 <div class="slide slide-1">
-                    <span class="text-xs font-bold uppercase tracking-widest mb-2 opacity-80 italic">Curiosidad Nivel 100</span>
-                    <h2 class="text-3xl font-black leading-none mb-4 tracking-tighter">¿Sabías que una parte de ti vivirá en tu madre para siempre? 🧬</h2>
-                    <p class="text-xs font-semibold opacity-70">Toca para descubrir este "superpoder" biológico ➡️</p>
+                    <span class="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-80 italic">Curiosidad Nivel 100</span>
+                    <h2 class="text-2xl md:text-3xl font-black leading-tight mb-4 tracking-tighter">¿Sabías que una parte de ti vivirá en tu madre para siempre? 🧬</h2>
+                    <p class="text-[10px] font-semibold opacity-70">Toca para descubrir este "superpoder" biológico ➡️</p>
                 </div>
                 <!-- Slide 2 -->
                 <div class="slide slide-2">
                     <div class="text-4xl mb-4">🚪</div>
-                    <h3 class="text-xl font-bold mb-2">Puerta de doble vía</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Sabemos que la placenta pasa nutrientes al bebé... ¡pero también funciona al revés! Células del bebé pasan a la sangre de la madre.</p>
+                    <h3 class="text-lg font-bold mb-2">Puerta de doble vía</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">La placenta pasa nutrientes al bebé... ¡pero también funciona al revés! Células del feto pasan a la sangre materna.</p>
                 </div>
                 <!-- Slide 3 -->
                 <div class="slide slide-3">
                     <div class="text-4xl mb-4">❤️</div>
-                    <h3 class="text-xl font-bold mb-2">Microquimerismo</h3>
+                    <h3 class="text-lg font-bold mb-2">Microquimerismo</h3>
                     <p class="text-sm leading-relaxed">Estas células viajan por el cuerpo de mamá y pueden instalarse en su cerebro, pulmones o incluso en su <b>corazón</b>.</p>
                 </div>
                 <!-- Slide 4 -->
                 <div class="slide slide-4">
                     <div class="text-4xl mb-4">🩹</div>
-                    <h3 class="text-xl font-bold mb-2">Hijos "reparadores"</h3>
-                    <p class="text-sm leading-relaxed">Se ha descubierto que si el corazón de la madre se daña, las células del bebé se transforman en tejido cardíaco para ayudar a repararlo.</p>
+                    <h3 class="text-lg font-bold mb-2">Hijos "reparadores"</h3>
+                    <p class="text-sm leading-relaxed">Si el corazón de la madre se daña, las células del bebé se transforman en tejido cardíaco para ayudar a repararlo.</p>
                 </div>
                 <!-- Slide 5 -->
                 <div class="slide slide-5">
-                    <h3 class="text-2xl font-bold mb-2 italic">La conexión eterna</h3>
+                    <h3 class="text-xl font-bold mb-2 italic">La conexión eterna</h3>
                     <p class="text-sm opacity-80 mb-6">Incluso décadas después del parto, esas células siguen ahí. ¡La biología es increíble!</p>
                     <div class="flex gap-4">
-                        <i class="fas fa-heart text-2xl text-red-400"></i>
-                        <i class="fas fa-share text-2xl"></i>
-                        <i class="fas fa-bookmark text-2xl text-amber-400"></i>
+                        <i class="fas fa-heart text-xl text-red-400"></i>
+                        <i class="fas fa-share text-xl"></i>
+                        <i class="fas fa-bookmark text-xl text-amber-400"></i>
                     </div>
                 </div>
             </div>
             
-            <!-- Contador -->
+            <!-- Contador Superior -->
             <div class="absolute top-3 right-3 bg-black/40 text-white text-[10px] px-2 py-1 rounded-full font-bold">
                 <span id="counter">1</span>/5
             </div>
         </div>
 
-        <!-- Botones de Acción -->
+        <!-- Botones de Acción Estilo Instagram -->
         <div class="p-3 flex items-center">
             <div class="flex gap-4">
-                <i class="far fa-heart text-2xl cursor-pointer hover:text-red-500 transition-colors"></i>
-                <i class="far fa-comment text-2xl cursor-pointer"></i>
-                <i class="far fa-paper-plane text-2xl cursor-pointer"></i>
+                <i class="far fa-heart text-xl cursor-pointer hover:text-red-500 transition-colors"></i>
+                <i class="far fa-comment text-xl cursor-pointer"></i>
+                <i class="far fa-paper-plane text-xl cursor-pointer"></i>
             </div>
             <div class="flex mx-auto" id="dots">
                 <div class="dot active"></div>
@@ -136,36 +144,39 @@
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-            <i class="far fa-bookmark text-2xl ml-auto cursor-pointer"></i>
+            <i class="far fa-bookmark text-xl ml-auto cursor-pointer"></i>
         </div>
 
-        <!-- Texto del Pie -->
+        <!-- Pie del Post -->
         <div class="px-3 pb-4">
             <p class="text-xs mb-1 font-bold">curiosa_mente_bio <span class="font-normal text-gray-600">🧠 No somos seres individuales...</span></p>
-            <p class="text-[11px] text-gray-500 italic">Científicos han encontrado células con ADN masculino en el cerebro de mujeres que tuvieron hijos varones hace 30 años...</p>
+            <p class="text-[10px] text-gray-400 italic">Científicos han hallado células con ADN fetal en el cerebro de madres años después del parto.</p>
         </div>
     </div>
 
     <script>
-        let current = 0;
-        const total = 5;
         const slides = document.getElementById('slides');
         const dots = document.querySelectorAll('.dot');
         const counter = document.getElementById('counter');
+        const trigger = document.getElementById('carousel-trigger');
+        let current = 0;
+        const total = 5;
 
-        document.getElementById('carousel-trigger').addEventListener('click', () => {
-            current = (current + 1) % total;
+        function updateCarousel() {
             slides.style.transform = `translateX(-${current * 100}%)`;
             dots.forEach((d, i) => d.classList.toggle('active', i === current));
             counter.innerText = current + 1;
+        }
+
+        trigger.addEventListener('click', () => {
+            current = (current + 1) % total;
+            updateCarousel();
         });
 
-        // Soporte para teclado
+        // Soporte teclado
         document.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowRight') { current = (current + 1) % total; slides.style.transform = `translateX(-${current * 100}%)`; }
-            if(e.key === 'ArrowLeft') { current = (current - 1 + total) % total; slides.style.transform = `translateX(-${current * 100}%)`; }
-            dots.forEach((d, i) => d.classList.toggle('active', i === current));
-            counter.innerText = current + 1;
+            if(e.key === 'ArrowRight') { current = (current + 1) % total; updateCarousel(); }
+            if(e.key === 'ArrowLeft') { current = (current - 1 + total) % total; updateCarousel(); }
         });
     </script>
 </body>
